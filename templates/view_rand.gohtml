@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ .Title }}</title>
+</head>
+<style>
+    .image {
+        text-align: center;
+    }
+
+    .image > img {
+        max-width: 90%;
+    }
+
+    .image > video {
+        max-width: 90%;
+        display: inline-block;
+    }
+</style>
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" src="/static/js/jquery-3.6.1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/static/js/img_rate.js" charset="UTF-8"></script>
+<body>
+<div class="container">
+    {{template "header" "random"}}
+    <div class="row">
+        <div class="col">
+            {{range .Images}}
+                <div class="image">
+                    {{ if eq .Extension ".webm"}}
+                        <video autoplay loop muted src="/image/{{.Id}}">
+                        </video>
+                    {{ else }}
+                        <img src="/image/{{.Id}}" alt="{{.Id}}">
+                    {{ end }}
+                    <button class="hit-btn" data-image-id="{{.Id}}">++</button>
+                </div>
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>

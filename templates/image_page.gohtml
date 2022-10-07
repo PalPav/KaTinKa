@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ .Title }}</title>
+</head>
+<script>
+    let page_image_id = {{.Image.Id}}
+</script>
+<style>
+    .image > img {
+        max-height: 900px;
+        max-width: 100%;
+    }
+
+    .image > video {
+        width: 100%;
+        display: inline-block;
+    }
+</style>
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<script type="text/javascript" src="/static/js/jquery-3.6.1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/static/js/img_edit.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/static/js/img_rate.js" charset="UTF-8"></script>
+<body>
+<div class="container">
+    {{template "header" "edit"}}
+    <div class="row">
+        <div class="image col-md-8" title="{{ .Image.OrigName}}">
+            <div class="col-md-12 d-flex">
+                <h4>Image</h4><button class="hit-btn btn btn-light btn-sm" data-image-id="{{.Image.Id}}">++</button>
+            </div>
+
+            {{ if eq .Image.Extension ".webm"}}
+                <video autoplay loop muted src="/image/{{.Image.Id}}">
+                </video>
+            {{ else }}
+                <img src="/image/{{.Image.Id}}" alt="{{.Image.Id}}">
+            {{ end }}
+        </div>
+        <div class="col-md-4">
+            <h4>Tags</h4>
+            <div class="input-group">
+                <input type="text" id="tag_input" class="form-control d-inline">
+                <button type="button" id="add_tag_btn" disabled class="btn btn-success btn-sm d-inline">
+                    +
+                </button>
+            </div>
+            <hr>
+            <ul class="list-group" id="add_tags_area">
+            </ul>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <ul class="list-group" id="image_tags_list">
+                        {{range .Tags}}
+                            <li class="list-group-item">
+                                {{ .Name }}
+                                <button type="button" data-tag_id="{{ .Id }}" class="btn btn-danger btn-sm float-end">
+                                    &times;
+                                </button>
+                            </li>
+                        {{end}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a href="/image/{{.Next}}/edit">>></a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

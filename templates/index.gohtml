@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ .AppName }}</title>
+</head>
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<body>
+<div class="container">
+    {{template "header" "index"}}
+    <div class="row">
+        <div class="col">
+            <h4>Last uploaded</h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Filename ({{ .TotalHits }})</th>
+                    <th>Edit</th>
+                </tr>
+                </thead>
+                {{range .LastUploaded}}
+                    <tr>
+                        <td>{{.Id}}</td>
+                        <td> {{.OrigName}}</td>
+                        <td><a class="btn btn-info btn-sm" target="_blank" href="/image/{{.Id}}/edit">Edit</a></td>
+                    </tr>
+                {{end}}
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

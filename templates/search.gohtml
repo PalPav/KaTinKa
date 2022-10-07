@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Image upload</title>
+  </head>
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+  <link href="/static/css/select2.css" rel="stylesheet">
+  <style>
+    .image {
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .image > img {
+      max-width: 90%;
+    }
+
+    .image > video {
+      max-width: 90%;
+      display: inline-block;
+    }
+  </style>
+  <script type="text/javascript" src="/static/js/jquery-3.6.1.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="/static/js/select2.full.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="/static/js/img_search.js" charset="UTF-8"></script>
+  <body>
+  <div class="container">
+    {{template "header" "search"}}
+    <h4>
+      Search
+    </h4>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-group">
+          <select id="search_select" name="tags[]" multiple="multiple" class="form-control d-inline">
+            {{range .Tags}}
+              <option value="{{ .Id }}">{{ .Name }}</option>
+            {{end}}
+          </select>
+          <button type="button" id="search_button" class="btn btn-success btn-sm d-inline">
+            SEARCH
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" id="images_container"></div>
+      </div>
+
+    </div>
+  </div>
+  </body>
+</html>

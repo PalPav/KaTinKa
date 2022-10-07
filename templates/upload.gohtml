@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Image upload</title>
+  </head>
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+  <script type="text/javascript" src="/static/js/jquery-3.6.1.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="/static/js/image_upload.js" charset="UTF-8"></script>
+  <body>
+  <div class="container">
+    {{template "header" "upload"}}
+    <h4>
+      image upload
+    </h4>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      Select images to upload:
+      <input type="file" name="upload_images" id="upload_image_input" accept="image/*" multiple>
+      <input type="submit" value="Upload Image" name="submit">
+    </form>
+
+    <p>also you can just CTRL+V copied img)</p>
+  </div>
+
+  </body>
+</html>

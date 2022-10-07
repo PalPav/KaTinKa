@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ .AppName }}</title>
+</head>
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<body>
+<div class="container">
+    <div class="align-content-center text-center">
+        <img src="/static/img/logo.png" alt="KaTinKa">
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>Welcome :)</h4>
+            <form method="post" action="/auth">
+                <div class="mb-3">
+                    <label for="input_collection" class="form-label">Collection</label>
+                    <input type="text" class="form-control" id="input_collection" name="collection" required>
+                    <div id="collectionHelp" class="form-text">Database name</div>
+                </div>
+                <div class="mb-3">
+                    <label for="input_user" class="form-label">User</label>
+                    <input type="text" class="form-control" id="input_user" name="user" required>
+                </div>
+                <div class="mb-3">
+                    <label for="input_pwd" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="input_pwd" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Hope it works</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
